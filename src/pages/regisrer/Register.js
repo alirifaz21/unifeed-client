@@ -80,7 +80,7 @@ function Register() {
                 </div>
 
                 <div class="policy">
-                    <div>Check Policy</div>
+                    <a href="#">Check Policy</a>
                     <label className="policy-content">
                         <input className='checkbox' type="checkbox" required/>
                         <div>

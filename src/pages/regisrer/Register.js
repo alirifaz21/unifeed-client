@@ -26,7 +26,7 @@ function Register() {
           };
         
           try {
-            await axios.post("https://unifeed-server.onrender.com/api/auth/register", user)
+            await axios.post("https://api.zivot.in/api/auth/register", user,{withCredentials:true})
             .then(response => {
               console.log("Response data:", response.data);
               navigate('/getinfo/'+response.data._id);

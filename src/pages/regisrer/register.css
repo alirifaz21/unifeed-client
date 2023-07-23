@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #E7243B;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around; /* Change to space-around */
+    width: 100%;
+    margin: 0;
+    padding: 80px 0;
+}
+
+ .right-container {
+    width: 100%;
+    border: #666666;
+    flex: 1;
+    display: flex; /* Add display: flex */
+    flex-direction: column; /* Add flex-direction: column */
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+}
+.left-container {
+    width: 100%;
+    
+    flex: 1;
+    padding: 20px;
+    display: flex; /* Add display: flex */
+    flex-direction: column; /* Add flex-direction: column */
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+}
+
+.right-content{
+    width:75% ;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+h2 {
+    margin: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+}
+
+input {
+    width: 230px;
+    height: 20px;
+    padding: 12px ;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #666666;
+    outline: none;
+}
+.policy-content {
+    width: 80%;
+    height: 20px;
+
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.checkbox{
+    width: 50px;
+}
+
+.policy {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.policy a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #E7243B;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

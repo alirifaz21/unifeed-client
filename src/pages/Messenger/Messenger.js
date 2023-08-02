@@ -7,8 +7,16 @@ import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { io } from "socket.io-client";
 import api from "../../api";
+const socketURL = ""
+if (process.env.NODE_ENV === "production") {
 
-const socket = io("http://localhost:8900", {
+  socketURL = "https://your-app-name.herokuapp.com";
+} else {
+
+  socketURL = "http://localhost:8900";
+}
+
+const socket = io(socketURL, {
   // Additional socket configurations if needed
 });
 

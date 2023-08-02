@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import axios from "axios";
 import { useRef } from "react";
 import { useNavigate } from 'react-router-dom';
@@ -13,6 +13,17 @@ function Register() {
     const password = useRef();
     const confirmpassword = useRef();
   axios.defaults.withCredentials = true;
+
+  useEffect(() => {
+    axios.get('http://localhost:8800/api/auth/')
+    .then(res=>{
+      if(res.data._id){
+        navigate('/feed')
+      }
+    }).catch(err => console.log(err))
+  console.log(emailid.current.value)
+    
+  }, [])
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (confirmpassword.current.value !== password.current.value) {
@@ -26,7 +37,7 @@ function Register() {
           };
         
           try {
-            await axios.post("https://api.zivot.in/api/auth/register", user)
+            await axios.post("http://localhost:8800/api/auth/register", user)
             .then(response => {
               console.log("Response data:", response.data);
               navigate('/getinfo/'+response.data._id);
@@ -67,6 +78,9 @@ function Register() {
                 <div className='input'>
                 <label for="email">Email</label>
                 <input type="email" ref={emailid} id="email" required/>
+                { emailid && 
+                  <div>Verify</div>
+                  }
                 </div>
 
                 <div className='input'>

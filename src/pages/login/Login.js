@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import axios from "axios";
 import { useRef } from "react";
 import { useNavigate } from 'react-router-dom';
@@ -13,6 +13,16 @@ function Login() {
     const password = useRef();
    
   axios.defaults.withCredentials = true;
+  useEffect(() => {
+    axios.get('http://localhost:8800/api/auth/')
+    .then(res=>{
+      if(res.data._id){
+        navigate('/feed')
+      }
+    }).catch(err => console.log(err))
+  
+    
+  }, [])
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -23,7 +33,7 @@ function Login() {
     };
   
     try {
-      const response = await axios.post("https://unifeed-server.onrender.com/api/auth/login", user);
+      const response = await axios.post("http://localhost:8800/api/auth/login", user);
       console.log("Response data:", response.data);
       navigate('/feed');
     } catch (error) {

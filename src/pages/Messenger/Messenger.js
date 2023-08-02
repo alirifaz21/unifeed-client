@@ -8,9 +8,13 @@ import axios from "axios";
 import { io } from "socket.io-client";
 import api from "../../api";
 
-const socket = io(process.env.REACT_APP_API_SOCKET, {
+const socket = io("http://localhost:8900", {
   // Additional socket configurations if needed
 });
+
+// const socket = io(process.env.REACT_APP_API_SOCKET, {
+//   // Additional socket configurations if needed
+// });
 
 
 function Messenger() {

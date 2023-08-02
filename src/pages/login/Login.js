@@ -14,7 +14,7 @@ function Login() {
    
   axios.defaults.withCredentials = true;
   useEffect(() => {
-    axios.get('http://localhost:8800/api/auth/')
+    axios.get('https://unifeed-server-production.up.railway.app/api/auth/')
     .then(res=>{
       if(res.data._id){
         navigate('/feed')
@@ -33,7 +33,7 @@ function Login() {
     };
   
     try {
-      const response = await axios.post("http://localhost:8800/api/auth/login", user);
+      const response = await axios.post("https://unifeed-server-production.up.railway.app/auth/login", user);
       console.log("Response data:", response.data);
       navigate('/feed');
     } catch (error) {

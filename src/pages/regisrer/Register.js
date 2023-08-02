@@ -6,6 +6,7 @@ import "./register.css"
 import api from "../../api";
 
 
+
 function Register() {
   const navigate = useNavigate();
     const fullname = useRef();

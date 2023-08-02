@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Post from '../posts/Post';
+import api from "../../api";
 
 function Share() {
   const [desc, setDesc] = useState('');
@@ -42,10 +43,10 @@ function Share() {
 
     try {
       // Upload the image to the server
-      await axios.put('http://localhost:8800/api/upload/', formData);
+      await api.put('/upload/', formData);
 
       // If the image is uploaded successfully, proceed to update the user with the profilePic
-      await axios.post('http://localhost:8800/api/posts/', user).
+      await api.post('/posts/', user).
       then(res =>{
         console.log(res)
       }).catch(err =>{console.log(err)})

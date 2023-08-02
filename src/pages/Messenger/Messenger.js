@@ -6,6 +6,7 @@ import ChatOnline from "../../components/chatonline/Chatonline";
 import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { io } from "socket.io-client";
+import api from "../../api";
 
 const socket = io("http://localhost:8900", {
   // Additional socket configurations if needed
@@ -31,7 +32,7 @@ function Messenger() {
   
     const fetchUserAndData = async () => {
       try {
-        const userData = await axios.get("http://localhost:8800/api/users");
+        const userData = await api.get("/users");
         if (userData.data) {
           setUser(userData.data);
         } else {
@@ -90,7 +91,7 @@ const event = (userf) => {
 
         const getConversations = async (user) => {
           try {
-            const res = await axios.get("http://localhost:8800/api/conversations/" + user._id);
+            const res = await api.get("/conversations/" + user._id);
             setConversations(res.data);
   
           } catch (err) {
@@ -102,7 +103,7 @@ const event = (userf) => {
       useEffect(() => {
         const getMessages = async () => {
           try {
-            const res = await axios.get("http://localhost:8800/api/messages/" + currentChat?._id);
+            const res = await api.get("/messages/" + currentChat?._id);
             setMessages(res.data);
           } catch (err) {
             console.log(err);
@@ -130,7 +131,7 @@ const event = (userf) => {
         });
     
         try {
-          const res = await axios.post("http://localhost:8800/api/messages", message);
+          const res = await api.post("/messages", message);
           setMessages([...messages, res.data]);
           setNewMessage("");
         } catch (err) {
@@ -153,7 +154,7 @@ const event = (userf) => {
     //       }
       
     //         try{
-    //         const res = await axios.post("/conversations",newconv)
+    //         const res = await api.post("/conversations",newconv)
       
     //         }catch{}
        
@@ -163,7 +164,7 @@ const event = (userf) => {
     //     const getId = async (e) =>{
     //       e.preventDefault();
     //       try{
-    //         const res = await axios.get("/users/"+ newUser)
+    //         const res = await api.get("/users/"+ newUser)
     //           setfriendId(res.data[0]._id);
     //           console.log(res.data[0]._id);
     //         }catch{}
@@ -181,7 +182,7 @@ const event = (userf) => {
         receiverId:"64c7ca25c8ac15df5654ee49"
       }
       try {
-        const res = await axios.post("http://localhost:8800/api/Conversations/",body);
+        const res = await api.post("/Conversations/",body);
         console.log(res.data);
       } catch (err) {
         console.log(err);

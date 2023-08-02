@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import "./otherInfo.css"
+import api from "../../api";
 
 function OtherInfo() {
   const id  = useParams();
@@ -65,11 +66,11 @@ function OtherInfo() {
         };
 
         try {
-          await axios.put("http://localhost:8800/api/upload/", formData)
+          await api.put("/upload/", formData)
             .then(response => {
               console.log("image uploaded to server");
               // If the image is uploaded successfully, proceed to update the user with the profilePic
-              axios.put("http://localhost:8800/api/auth/register/"+id.id, user)
+              api.put("/auth/register/"+id.id, user)
                 .then(response => {
                   console.log("image uploaded to database");
                   navigate("/feed")
@@ -107,7 +108,7 @@ function OtherInfo() {
           
           
           try {
-            await axios.put("http://localhost:8800/api/auth/register/"+id.id, user)
+            await api.put("/auth/register/"+id.id, user)
             .then(response => {
                 console.log("Response data:", response.data);
                 
@@ -129,7 +130,7 @@ function OtherInfo() {
 
     const verify = async () => {
         try {
-          await axios.post("http://localhost:8800/api/auth/verify/"+id.id)
+          await api.post("/auth/verify/"+id.id)
           .then(response => {
             console.log("Response data:");
             setCount(count+1)

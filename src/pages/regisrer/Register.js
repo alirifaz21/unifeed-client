@@ -3,6 +3,7 @@ import axios from "axios";
 import { useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import "./register.css"
+import api from "../../api";
 
 
 function Register() {
@@ -15,7 +16,7 @@ function Register() {
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    axios.get('http://localhost:8800/api/auth/')
+    api.get('/auth/')
     .then(res=>{
       if(res.data._id){
         navigate('/feed')
@@ -37,7 +38,7 @@ function Register() {
           };
         
           try {
-            await axios.post("http://localhost:8800/api/auth/register", user)
+            await api.post("/auth/register", user)
             .then(response => {
               console.log("Response data:", response.data);
               navigate('/getinfo/'+response.data._id);

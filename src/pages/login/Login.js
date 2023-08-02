@@ -3,6 +3,7 @@ import axios from "axios";
 import { useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import "./login.css"
+import api from "../../api";
 
 
 function Login() {
@@ -14,7 +15,7 @@ function Login() {
    
   axios.defaults.withCredentials = true;
   useEffect(() => {
-    axios.get('https://unifeed-server-production.up.railway.app/api/auth/')
+    api.get('/auth')
     .then(res=>{
       if(res.data._id){
         navigate('/feed')
@@ -33,7 +34,7 @@ function Login() {
     };
   
     try {
-      const response = await axios.post("https://unifeed-server-production.up.railway.app/auth/login", user);
+      const response = await api.post("/auth/login", user);
       console.log("Response data:", response.data);
       navigate('/feed');
     } catch (error) {

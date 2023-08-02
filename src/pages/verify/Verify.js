@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React from 'react'
+import api from "../../api";
 import { useParams } from 'react-router-dom';
 function Verify() {
     const id  = useParams();
     const verify = async () => {
        
         try {
-          await axios.put("http://localhost:8800/api/auth/verify/"+id.id)
+          await api.put("/auth/verify/"+id.id)
           .then(response => {
             console.log("Response data:", response.data);
             

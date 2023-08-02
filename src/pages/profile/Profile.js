@@ -6,7 +6,7 @@ import Share from '../../components/Share/Share';
 import './profile.css'
 import Modal from '../../components/modal/Modal';
 import ProfileL from '../../components/profileL/ProfileL';
-
+import api from "../../api";
 
 function Profile() {
     const id  = useParams().id;
@@ -43,7 +43,7 @@ function Profile() {
 
 const getUsers = async () => {
   try {
-    const res = await axios.get("http://localhost:8800/api/auth");
+    const res = await api.get("/auth");
     if (res.data) {
       setUser(res.data);
       
@@ -123,7 +123,7 @@ console.log(user)
       useEffect(() => {
         const loaddata = async () => {
           try {
-            const res = await axios.get('http://localhost:8800/api/users/'+id);
+            const res = await api.get('/users/'+id);
     
             if (!res.data) {
               navigate('/register');
@@ -148,7 +148,7 @@ console.log(user)
         }
 
         try {
-          await axios.put("http://localhost:8800/api/auth/register/"+id, user)
+          await api.put("/auth/register/"+id, user)
           .then(response => {
               console.log("Response data:", response.data);
               setData(response.data)
@@ -178,7 +178,7 @@ console.log(user)
 
 
         try {
-          await axios.patch("http://localhost:8800/api/users/cert/"+id, user)
+          await api.patch("/users/cert/"+id, user)
           .then(response => {
               console.log("Response data:", response.data);
               setData(response.data)
@@ -208,7 +208,7 @@ console.log(user)
 
 
         try {
-          await axios.post("http://localhost:8800/api/users/cert/"+id, user)
+          await api.post("/users/cert/"+id, user)
           .then(response => {
               console.log("Response data:", response.data);
               setData(response.data)
@@ -233,7 +233,7 @@ console.log(user)
               const delid = selectedCertificate._id
   
             try {
-              await axios.delete(`http://localhost:8800/api/users/cert/${id}/${delid}`)
+              await api.delete(`/users/cert/${id}/${delid}`)
               .then(response => {
                   console.log("Response data:", response.data);
                   setData(response.data)

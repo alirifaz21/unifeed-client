@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./conversation.css";
+import api from "../../api";
 
 export default function Conversation({ conversation, currentUser }) {
   const [user, setUser] = useState(null);
@@ -11,7 +12,7 @@ export default function Conversation({ conversation, currentUser }) {
 
     const getUser = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/api/users/" + friendId);
+        const res = await api.get("/users/" + friendId);
         setUser(res.data);
       } catch (err) {
         console.log(err);

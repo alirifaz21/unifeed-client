@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
+import api from "../../api";
 
 function Post() {
   const [posts, setPosts] = useState([]);
@@ -9,7 +10,7 @@ function Post() {
     // Function to fetch user posts from the backend
     const fetchUserPosts = async () => {
       try {
-        const response = await axios.get('http://localhost:8800/api/posts/64c411596400a9bf32b1830d');
+        const response = await api.get('/posts/64c411596400a9bf32b1830d');
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching user posts:', error);
@@ -47,8 +48,7 @@ window.addEventListener("scroll", function() {
   return (
     <div>
       <h2>User Posts</h2>
-      <h2>User Posts</h2>
-      <h2>User Posts</h2>
+  
 
       {posts.length > 0 ? (
         <div>

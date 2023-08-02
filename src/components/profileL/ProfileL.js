@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import api from "../../api";
 
 function ProfileL({ data, update }) {
   const [followed, setFollowed] = useState();
@@ -14,7 +15,7 @@ function ProfileL({ data, update }) {
 
   const getUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:8800/api/users");
+      const res = await api.get("/users");
       setFollowed(res.data.followings.includes(data?.data?._id));
     } catch (err) {
       console.log(err);
@@ -28,7 +29,7 @@ console.log(update)
       if (!followed) {
         setFollowed(true);
         try{
-        const res = await axios.put("http://localhost:8800/api/users/follow", {
+        const res = await api.put("/users/follow", {
           id: pdata._id,
         });
     }catch (err) {
@@ -37,7 +38,7 @@ console.log(update)
       } else {
         setFollowed(false);
         try{
-        await axios.put("http://localhost:8800/api/users/unfollow", {
+        await api.put("/users/unfollow", {
           id: pdata._id,
         });
     }catch (err) {

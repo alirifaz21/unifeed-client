@@ -102,6 +102,9 @@ body {
     margin-top: 20px;
     max-width: 250px;
     min-width: 250px;
+   
+  
+  
   
   
     /* right: 0;
@@ -111,16 +114,20 @@ body {
   .login-input label {
     display: inline-block;
     margin-left: -30px;
-    font-weight: bold;
-    color: #333;
+    color: #555555;
+    font-size: 15px !important;
+    font-weight: 500;
   }
   
   .login-input input[type="text"],
   .login-input input[type="password"] {
     width: 120%;
-    padding: 12px;
+    padding: 5px;
     margin-top: 6px;
     margin-left: -30px;
+    border: 1px solid #ddd !important;
+    color: #666666;
+    height: 23px;
   }
   
   .login-input input[type="checkbox"] {

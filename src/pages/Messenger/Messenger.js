@@ -8,7 +8,7 @@ import axios from "axios";
 import { io } from "socket.io-client";
 import api from "../../api";
 
-const socket = io("http://localhost:8900", {
+const socket = io(process.env.REACT_APP_SOCKET_URL, {
   // Additional socket configurations if needed
 });
 

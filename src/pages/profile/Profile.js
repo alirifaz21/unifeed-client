@@ -8,6 +8,7 @@ import Modal from '../../components/modal/Modal';
 import ProfileL from '../../components/profileL/ProfileL';
 import api from "../../api";
 
+
 function Profile() {
     const id  = useParams().id;
     const [data, setData] = useState(null)
@@ -32,6 +33,7 @@ function Profile() {
     const [myid, setmyid] = useState(null)
     const modalRef = useRef(null);
     const updateButtonRef = useRef(null);
+    const navigate = useNavigate();
     axios.defaults.withCredentials = true;
 
 
@@ -44,19 +46,14 @@ function Profile() {
 const getUsers = async () => {
   try {
     const res = await api.get("/auth");
-    if (res.data) {
-      setUser(res.data);
-      
-    } else {
-      // Handle the case when user data is null or empty
-      console.error("User data is null or empty.");
-    }
+    const tuser = await res.data
+    setUser(tuser)
   } catch (err) {
     // Handle the error case when the API call fails
     console.error("Failed to fetch user data:", err);
   }
 };
-console.log(user)
+
   // Function to handle opening the modal
   const handleOpenModalabout = () => {
     setShowModalabout(true);
@@ -119,7 +116,7 @@ console.log(user)
 }
   
   
-      const navigate = useNavigate();
+   
       useEffect(() => {
         const loaddata = async () => {
           try {
@@ -128,8 +125,10 @@ console.log(user)
             if (!res.data) {
               navigate('/register');
             } else {
-              setData(res.data.data);
-              setupdate(res.data.update)
+              const tdata = await res.data.data
+              const tupdate = await res.data.update
+              setData(tdata);
+              setupdate(tupdate)
             }
           } catch (err) {
             console.log(err);
@@ -167,7 +166,7 @@ console.log(user)
               }
                   };
 
-              console.log(selectedCertificate)
+         
       
       //certificate
       const updatecert = async() => {
@@ -255,8 +254,37 @@ console.log(user)
             
             
           
+          const setconv = async () => {
+            try {
+              const response = await api.get(`/conversations/find/${user._id}/${data._id}`);
+              console.log(response.data)
+                if(response.data == null){
+                  
+                    try {
+                      const responset = await api.post('/conversations', {
+                        senderId: user._id,
+                        receiverId: data._id,
+                      });
+                      console.log('Conversation created:', responset.data);
+                      navigate('/messages');
+                    } catch (error) {
+                      console.error('Error creating conversation:', error);
+                    }
+                
+                }
+                else{
+                  navigate('/messages');
 
-            
+                }
+            } catch (error) {
+              console.error('Error finding conversation:', error);
+            }
+
+
+
+       
+          };
+
                   
 
       
@@ -280,6 +308,13 @@ console.log(user)
         alt="Profile Picture"
         style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
         <ProfileL data={datat} update={updatet}/>
+        <div>
+        {!update && (
+              <div>
+                <button onClick={setconv} >message</button>
+              </div>
+            )}
+      </div>
           {/* About */}
           <div>
           <h2>About</h2>

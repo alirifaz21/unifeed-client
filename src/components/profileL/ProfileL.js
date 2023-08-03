@@ -22,7 +22,7 @@ function ProfileL({ data, update }) {
     }
   };
 
-console.log(update)
+
 
   const handleClick = async () => {
     try {

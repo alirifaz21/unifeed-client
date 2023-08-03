@@ -28,6 +28,7 @@ function Messenger() {
   const [user, setUser] = useState({});
   const scrollRef = useRef();
   const usert = { user: user};
+  
     axios.defaults.withCredentials = true;
 
     useEffect(() => {
@@ -37,47 +38,56 @@ function Messenger() {
     const fetchUserAndData = async () => {
       try {
         const userData = await api.get("/users");
-        if (userData.data) {
-          setUser(userData.data);
-        } else {
-          console.error("User data is null or empty.");
-        }
-        
-        event(userData.data)
-        getConversations(userData.data)
+        const usert = await userData.data
+        setUser(usert)
+        getConversations(usert)
       } catch (err) {
         console.error("Failed to fetch user data:", err);
       }
     };
-  
-
 
     
+    useEffect(() => {
+      
+      socket.emit("addUser", user._id);
+      socket.on("getUsers", (users) => {
+        if(user.followings!=undefined){
+        setOnlineUsers(
+          user.followings.filter((f) => users.some((u) => u.userId === f))
+        )}
+     
+      });
+    }, [user]);
+
+
+  
+    
         // Event listener to receive new messages
-const event = (userf) => {
-        socket.on("getMessage", (data) => {
-          setArrivalMessage({
-            sender: data.senderId,
-            text: data.text,
-            createdAt: Date.now(),
-          });
-        });
+// const event = () => {
+//         socket.on("getMessage", (data) => {
+//           setArrivalMessage({
+//             sender: data.senderId,
+//             text: data.text,
+//             createdAt: Date.now(),
+//           });
+//         });
       
-        socket.on("getUsers", (users) => {
-   
-      
-          const on = userf.followings.filter((f) => users.some((u) => u.userId === f))
-          if(on){setOnlineUsers(on)
-            console.log(onlineUsers)}
+//         socket.on("getUsers", (users) => {
+//           // const on = userf.followings.filter((f) => users.some((u) => u.userId === f))
+//          setOnlineUsers(users)
           
-          
-        });
-        return () => {
-          socket.off("getMessage");
-          socket.off("getUsers");
-        };
+//         });
+//         return () => {
+//           socket.off("getMessage");
+//           socket.off("getUsers");
+//         };
       
-      }
+//       }
+
+
+
+
+
 
       useEffect(() => {
         // Emit "addUser" event when the component mounts
@@ -250,11 +260,11 @@ const event = (userf) => {
     <div className="chatOnline">
       <div className="chatOnlineWrapper">
     
-        {/* <ChatOnline
+        <ChatOnline
           onlineUsers={onlineUsers}
           currentId={user._id}
           setCurrentChat={setCurrentChat}
-        /> */}
+        />
       </div>
     </div>
   </div>

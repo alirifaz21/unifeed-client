@@ -1,0 +1,242 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e7243b;
+    /* background-image: url("./back.png");
+      background-repeat: no-repeat;
+      background-size: cover; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-login-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .login-left-container {
+    background: transparent;
+    padding: 30px;
+    text-align: justify;
+  }
+  
+  .login-left-container h2 {
+    font-family: "Bungee shade";
+    font-size: 100px;
+    line-height: 100px;
+    color: #fff;
+  }
+  
+  .login-left-container p {
+    color: #fff;
+    margin-top: 20px;
+    font-size: 17px;
+  }
+  
+  .login-right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 34%;
+    height: 90vh;
+    background-color: #E7243B;
+    border: none;
+    box-shadow: 6px 6px 50px rgba(0, 0, 0, 0.5);
+  }
+  
+  .login-linktext {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .login-right-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 80vh;
+    background-color: #ffffff;
+    border: none;
+    box-shadow: 6px 6px 50px rgba(0, 0, 0, 0.5);
+  }
+  
+  .login-right-bottom {
+    color: white;
+    text-align: center;
+    margin: 10px 0px;
+  }
+  
+  .login-bgYellow {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    max-width: 100%;
+    z-index: -1;
+  }
+  
+  .login-right-content h2 {
+    font-family: "Bowlby One SC";
+    font-size: 40px;
+    color: #e7243b;
+    text-align: center;
+  }
+  
+  .login-form {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+  }
+  
+  .login-input {
+    margin: 0px 0;
+    position: relative;
+    margin: auto;
+    margin-top: 20px;
+    max-width: 250px;
+    min-width: 250px;
+  
+  
+    /* right: 0;
+      left: 0; */
+  }
+  
+  .login-input label {
+    display: inline-block;
+    margin-left: -30px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .login-input input[type="text"],
+  .login-input input[type="password"] {
+    width: 120%;
+    padding: 12px;
+    margin-top: 6px;
+    margin-left: -30px;
+  }
+  
+  .login-input input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-top: 6px;
+   
+    margin-bottom: 20px;
+  
+  }
+  
+  .login-check {
+    min-width: 100%;
+  
+  }
+  
+  .login-button {
+    margin-top: 20px;
+    padding: 15px 70px;
+    background-color: #44b0ec;
+    color: #fff;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background-color: #c11e34;
+  }
+
+  
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .login-mobile-hidden {
+      display: none;
+    }
+    .login-login-container {
+      width: 760px;
+      margin-top: 100px;
+  
+      flex-direction: column;
+    }
+    .login-left-container h2 {
+      display: flex;
+      text-align: center;
+      font-size: 40px;
+      line-height: 80px;
+      margin-left: 140px;
+      color: #fff;
+    }
+    
+    .login-left-container p {
+      color: #fff;
+      text-align: center;
+  
+      margin-top: 20px;
+      font-size: 17px;
+    }
+    .login-bgYellow {
+      position: absolute;
+      right: -180px;
+      top: 190px;
+      margin-top: 100px;
+      height: 400px;
+      max-width: 400px;
+      z-index: -1;
+    }
+  
+    .login-right-container {
+      margin-left: 180px;
+      width: 70%;
+      
+    }
+    .login-right-content{
+      margin-top: 10px;
+    }
+  
+  
+    .login-form {
+      justify-content: center;
+    }
+  .login-input label{
+    font-size: 25px;
+  }
+  .login-logintext{
+    font-size: 50px;
+  }
+    .login-input input {
+      width: 100%;
+      padding: 0px;
+    }
+    .login-input {
+      margin: 0px 0;
+      position: relative;
+      margin: auto;
+      margin-top: 20px;
+      max-width: 250px;
+      min-width: 250px;
+    }
+    .login-input input[type="checkbox"] {
+      transform: scale(1.5);
+      padding: 0px;
+      margin-top: 6px;
+      margin-left: -140px;
+      margin-bottom: 20px;
+    
+    }
+    .login-button{
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .login-span{
+      margin-left: -110px;
+    }
+    
+  }

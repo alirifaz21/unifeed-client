@@ -12,12 +12,13 @@ export default function Conversation({ conversation, currentUser }) {
 
     const getUser = async () => {
       try {
-        const res = await api.get("/users/" + friendId);
+        const res = await api.get(`/users/friend/${friendId}`);
         setUser(res.data);
+     
       } catch (err) {
         console.log(err);
       }
-    };
+    }; 
     getUser();
   }, [currentUser, conversation]);
 
@@ -35,7 +36,7 @@ export default function Conversation({ conversation, currentUser }) {
         }
         alt=""
       />
-      <span className="conversationName">{user?.username}</span>
+      <span className="conversationName">{user?.userName}</span>
     </div>
   );
 }

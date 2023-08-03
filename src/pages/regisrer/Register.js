@@ -80,9 +80,6 @@ function Register() {
                 <div className='input'>
                 <label for="email">Email</label>
                 <input type="email" ref={emailid} id="email" required/>
-                { emailid && 
-                  <div>Verify</div>
-                  }
                 </div>
 
                 <div className='input'>

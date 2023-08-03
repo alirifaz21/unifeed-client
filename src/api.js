@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://unifeed-server-production.up.railway.app/api", // Replace this with your desired base URL
+  baseURL: process.env.REACT_APP_BASE_URL, 
   withCredentials: true,
 });
 

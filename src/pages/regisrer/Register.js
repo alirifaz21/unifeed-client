@@ -96,7 +96,6 @@ function Register() {
                   ref={confirmpassword}
                   id="confirm-password"
                   required
-                  placeholder=" Confirm Password"
                 />
               </div>
 
